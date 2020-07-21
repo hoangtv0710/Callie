@@ -48,7 +48,7 @@ class SubCategoryController extends Controller
     
         SubCategory::updateOrCreate(['id' => $id], $details);  
             
-        return Response::json(['success' => 'Thao tác thành công', 'id' => $id]);
+        return Response::json(['success' => 'Thêm thành công', 'id' => $id]);
     }
 
     public function edit($id)
@@ -62,6 +62,6 @@ class SubCategoryController extends Controller
     public function destroy($id) 
     {
         $subcategory = SubCategory::where('id',$id)->delete();
-        return Response::json($subcategory);
+        return Response::json(['success' => 'Xoá thành công']);
     }
 }

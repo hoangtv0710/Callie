@@ -18,6 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="css/toastr.css" rel="stylesheet">
   <link rel="icon" href="images/logo.png"> 
 
   <style>
