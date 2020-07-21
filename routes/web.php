@@ -25,4 +25,9 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('category/{id}/edit', 'CategoryController@edit');
 	Route::post('category/store', 'CategoryController@store');
 	Route::get('category/delete/{id}', 'CategoryController@destroy');
+	//subcategory
+	Route::get('subcategory', 'SubCategoryController@index');
+	Route::get('subcategory/{id}/edit', 'SubCategoryController@edit');
+	Route::post('subcategory/store', 'SubCategoryController@store');
+	Route::get('subcategory/delete/{id}', 'SubCategoryController@destroy');
 });

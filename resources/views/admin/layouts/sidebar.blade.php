@@ -21,16 +21,19 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Danh mục
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
+      <!-- Danh mục -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ url('/admin/category') }}">
           <i class="fas fa-folder"></i>
-          <span>Danh sách</span>
+          <span>Danh mục</span>
+        </a>
+      </li>
+
+      <!-- Danh mục con -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url('/admin/subcategory') }}">
+          <i class="fas fa-folder-open"></i>
+          <span>Danh mục con</span>
         </a>
       </li>
 
