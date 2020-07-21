@@ -44,13 +44,14 @@
 
           <input type="hidden" name="category_id" id="category_id">
           <div class="form-group">
-            <label for="name" class="col-sm-12 control-label">Tên danh mục</label>
+            <label for="name" class="col-sm-12 control-label">Tên danh mục con</label>
             <div class="col-sm-12">
               <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên danh mục">
               <span class="error" style="color: red;font-size: 1rem;"></span>
             </div>
           </div>
           <div class="form-group">
+            <label for="name" class="col-sm-12 control-label">Thuộc danh mục</label>
             <div class="col-sm-12">
               <select name="cate_id" id="cate_id" class="form-control">
                   @foreach ($category as $item)

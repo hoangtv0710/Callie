@@ -43,7 +43,7 @@ class CategoryController extends Controller
     
         Category::updateOrCreate(['id' => $id], $details);  
             
-        return Response::json(['success' => 'Thao tác thành công', 'id' => $id]);
+        return Response::json(['success' => 'Thêm thành công', 'id' => $id]);
     }
 
     public function edit($id)
@@ -58,6 +58,6 @@ class CategoryController extends Controller
     {
         $subcategory = SubCategory::where('cate_id',$id)->delete();
         $category = Category::where('id',$id)->delete();
-        return Response::json($category);
+        return Response::json(['success' => 'Xoá thành công']);
     }
 }

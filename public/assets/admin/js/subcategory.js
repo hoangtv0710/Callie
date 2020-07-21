@@ -35,6 +35,7 @@ $(document).ready( function () {
     
     //after click button edit
     $('body').on('click', '.edit', function () {
+        $('#form_result').html('');
         var category_id = $(this).data('id');
         $.get('admin/subcategory/' + category_id +'/edit', function (data) {
         $('#categoryCrudModal').html("Sửa danh mục con");
@@ -82,20 +83,23 @@ $(document).ready( function () {
             var html = '';
             if(data.id == null) {
                 if(data.errors) {
-                html = '<div class="alert alert-danger">';
-                for(var count = 0; count < data.errors.length; count++)
-                {
-                    html += '<p>' + data.errors[count] + '</p>';
-                }
-                html += '</div>';
+                    html = '<div class="alert alert-danger">';
+                    for(var count = 0; count < data.errors.length; count++)
+                    {
+                        html += '<span>' + data.errors[count] + '</span>';
+                    }
+                    html += '</div>';
+                    $('#form_result').html(html);
                 }
                 if(data.success) {
-                html = '<div class="alert alert-success">' + data.success + '</div>';
-                $('#categoryForm')[0].reset();
-                $('#subcategory_datatable').DataTable().ajax.reload();
+                    toastr.success(data.success, 'Thông báo', {timeOut: 2000});
+                    html = '<div class="alert alert-success">' + data.success + '</div>';
+                    $('#categoryForm')[0].reset();
+                    $('#subcategory_datatable').DataTable().ajax.reload();
+                    $('#form_result').html('');
                 }
-                $('#form_result').html(html);
             } else {
+                toastr.success('Sửa thành công', 'Thông báo', {timeOut: 2000});
                 $('#categoryForm').trigger("reset");
                 $('#add-or-edit').modal('hide');
                 $('#btn-save').html('Save...');
@@ -120,12 +124,13 @@ $(document).ready( function () {
                     $('.ajax-loader').show();
                 },
                 success : function(data){
+                    toastr.success(data.success, 'Thông báo', {timeOut: 1000});
                     $('#delete').modal('hide');
                     var oTable = $('#subcategory_datatable').dataTable(); 
                     oTable.fnDraw(false);
                 },
                 error: function (data) {
-                    console.log('Error:', data);
+                    toastr.error(data, 'Lỗi', {timeOut: 2000});
                 },
                 complete: function(){
                     $('.ajax-loader').hide();
