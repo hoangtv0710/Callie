@@ -42,7 +42,7 @@ class SubCategoryController extends Controller
             return Response::json(['errors' => $error->errors()->all()]);
         }
     
-        $id = $request->category_id;
+        $id = $request->subcategory_id;
     
         $details = ['name' => $request->name, 'cate_id' => $request->cate_id, 'status' => $request->status];
     

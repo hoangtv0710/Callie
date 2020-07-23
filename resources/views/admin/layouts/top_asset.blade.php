@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Admin - @yield('title')</title>
+  <title>@yield('title')</title>
   <base href="{{ asset('') }}">
   <!-- Custom fonts for this template-->
   <link href="assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
   <link href="assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="css/toastr.css" rel="stylesheet">
-  <link rel="icon" href="images/logo.png"> 
+  <link rel="icon" href="https://img.icons8.com/ultraviolet/40/000000/data-configuration.png"/>
 
   <style>
     .ajax-loader {

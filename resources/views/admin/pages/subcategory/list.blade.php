@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-	Danh mục con
+Quản trị danh mục con
 @endsection
 
 @section('description')
@@ -36,13 +36,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="categoryCrudModal"></h4>
+        <h4 class="modal-title" id="subcategoryCrudModal"></h4>
       </div>
       <div class="modal-body">
         <span id="form_result"></span>
-        <form id="categoryForm" name="categoryForm" class="form-horizontal" enctype="multipart/form-data">
+        <form id="subcategoryForm" name="subcategoryForm" class="form-horizontal" enctype="multipart/form-data">
 
-          <input type="hidden" name="category_id" id="category_id">
+          <input type="hidden" name="subcategory_id" id="subcategory_id">
           <div class="form-group">
             <label for="name" class="col-sm-12 control-label">Tên danh mục con</label>
             <div class="col-sm-12">
@@ -92,7 +92,7 @@
               <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc muốn xóa danh mục này không?</h5>
           </div>
           <div class="modal-body" style="margin-left: 183px;">
-              <button type="button" class="btn btn-success" id="deleteCategory">Có</button>
+              <button type="button" class="btn btn-success" id="deleteSubCategory">Có</button>
               <button class="btn btn-secondary" type="button" data-dismiss="modal">Không</button>
           </div>
       </div>

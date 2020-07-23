@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-	Trang chủ
+	Quản trị
 @endsection
 
 @section('description')
