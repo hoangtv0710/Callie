@@ -17,4 +17,5 @@
   <script src="assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
   <script src="js/toastr.min.js"></script>
+  <script src="ckeditor/ckeditor.js"></script>
   @yield('script')

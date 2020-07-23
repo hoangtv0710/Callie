@@ -37,6 +37,14 @@
         </a>
       </li>
 
+      <!-- Bài viết -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url('/admin/post') }}">
+          <i class="fas fa-newspaper"></i>
+          <span>Bài viết</span>
+        </a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

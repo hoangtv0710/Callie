@@ -27,21 +27,21 @@ $(document).ready( function () {
     //after click button add
     $('#add').click(function () {
         $('#btn-save').html("Thêm");
-        $('#category_id').val('');
-        $('#categoryForm').trigger("reset");
-        $('#categoryCrudModal').html("Thêm mới danh mục con");
+        $('#subcategory_id').val('');
+        $('#subcategoryForm').trigger("reset");
+        $('#subcategoryCrudModal').html("Thêm mới danh mục con");
         $('#add-or-edit').modal('show');
     });
     
     //after click button edit
     $('body').on('click', '.edit', function () {
         $('#form_result').html('');
-        var category_id = $(this).data('id');
-        $.get('admin/subcategory/' + category_id +'/edit', function (data) {
-        $('#categoryCrudModal').html("Sửa danh mục con");
+        var subcategory_id = $(this).data('id');
+        $.get('admin/subcategory/' + subcategory_id +'/edit', function (data) {
+        $('#subcategoryCrudModal').html("Sửa danh mục con");
             $('#add-or-edit').modal('show');
             $('#btn-save').html("Sửa");
-            $('#category_id').val(data.subcategory.id);
+            $('#subcategory_id').val(data.subcategory.id);
             $('#name').val(data.subcategory.name);
             let html = '';
             $.each(data.category,function(key,value){
@@ -65,7 +65,7 @@ $(document).ready( function () {
     });
 
     //submit add or edit
-    $('body').on('submit', '#categoryForm', function (e) {
+    $('body').on('submit', '#subcategoryForm', function (e) {
         e.preventDefault();
         var actionType = $('#btn-save').val();
         var formData = new FormData(this);
@@ -94,13 +94,13 @@ $(document).ready( function () {
                 if(data.success) {
                     toastr.success(data.success, 'Thông báo', {timeOut: 2000});
                     html = '<div class="alert alert-success">' + data.success + '</div>';
-                    $('#categoryForm')[0].reset();
+                    $('#subcategoryForm')[0].reset();
                     $('#subcategory_datatable').DataTable().ajax.reload();
                     $('#form_result').html('');
                 }
             } else {
                 toastr.success('Sửa thành công', 'Thông báo', {timeOut: 2000});
-                $('#categoryForm').trigger("reset");
+                $('#subcategoryForm').trigger("reset");
                 $('#add-or-edit').modal('hide');
                 $('#btn-save').html('Save...');
                 var oTable = $('#subcategory_datatable').dataTable();
@@ -115,11 +115,11 @@ $(document).ready( function () {
 
     //delete
     $('body').on('click', '.delete', function () {
-        var category_id = $(this).data("id");
-        $('#deleteCategory').click(function(){
+        var subcategory_id = $(this).data("id");
+        $('#deleteSubCategory').click(function(){
             $.ajax({
                 type: "get",
-                url: "admin/subcategory/delete/"+category_id,
+                url: "admin/subcategory/delete/"+subcategory_id,
                 beforeSend: function(){
                     $('.ajax-loader').show();
                 },
