@@ -40,24 +40,24 @@ class PostController extends Controller
     {  
         $datetime = Carbon::now('Asia/Ho_Chi_Minh');
         $rules = array(
-            'title' =>  'required',
+            'title' =>  'required|max:255',
             'description' =>  'required',
             'content' =>  'required',
             'cate_id' =>  'required',
             'author' =>  'required',
             'image' =>  'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         );
-
         $error = Validator::make($request->all(), $rules);
-
         if($error->fails())
         {
             return Response::json(['errors' => $error->errors()->all()]);
         }
     
         $postId = $request->post_id;
-    
+        
+        $slug = str_slug($request->title);
         $details = ['title' => $request->title, 
+                    'slug' => $slug,
                     'description' => $request->description, 
                     'content' => $request->content, 
                     'cate_id' => $request->cate_id, 
@@ -69,7 +69,6 @@ class PostController extends Controller
         if ($files = $request->file('image')) {
             //delete old file
             \File::delete('images/posts/'.$request->hidden_image);
-            
             //insert new file
             $destinationPath = 'images/posts/'; // upload path
             $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
@@ -86,6 +85,7 @@ class PostController extends Controller
     public function getSubcategory(Request $request)
     {
         $subcategory = SubCategory::where('cate_id',$request->cate_id)->get();
+
         return Response::json($subcategory);
 
     }
@@ -96,6 +96,7 @@ class PostController extends Controller
         $post  = Post::where($where)->first();
         $category = Category::get();
         $subcategory = SubCategory::get();
+
         return Response::json(['post' => $post, 'category' => $category, 'subcategory' => $subcategory]);
     }
 
@@ -104,6 +105,7 @@ class PostController extends Controller
         $data = Post::where('id',$id)->first(['image']);
         \File::delete('images/posts/'.$data->image);
         $post = Post::where('id',$id)->delete();
+
         return Response::json(['success' => 'Xoá thành công']);
     }
 }
