@@ -27,19 +27,18 @@ class CategoryController extends Controller
     public function store(Request $request)
     {  
         $rules = array(
-            'name' => 'required',
+            'name' => 'required|max:255',
         );
-
         $error = Validator::make($request->all(), $rules);
-
         if($error->fails())
         {
             return Response::json(['errors' => $error->errors()->all()]);
         }
     
         $id = $request->category_id;
-    
-        $details = ['name' => $request->name, 'status' => $request->status];
+
+        $slug = str_slug($request->name);
+        $details = ['name' => $request->name, 'slug' => $slug, 'status' => $request->status];
     
         Category::updateOrCreate(['id' => $id], $details);  
             
@@ -50,7 +49,7 @@ class CategoryController extends Controller
     {   
         $where = array('id' => $id);
         $category  = Category::where($where)->first();
-    
+
         return Response::json($category);
     }
 
@@ -58,6 +57,7 @@ class CategoryController extends Controller
     {
         $subcategory = SubCategory::where('cate_id',$id)->delete();
         $category = Category::where('id',$id)->delete();
+
         return Response::json(['success' => 'Xoá thành công']);
     }
 }

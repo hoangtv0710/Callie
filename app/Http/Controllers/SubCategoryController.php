@@ -31,20 +31,19 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {  
         $rules = array(
-            'name' => 'required',
+            'name' => 'required|max:255',
             'cate_id' => 'required'
         );
-
         $error = Validator::make($request->all(), $rules);
-
         if($error->fails())
         {
             return Response::json(['errors' => $error->errors()->all()]);
         }
     
         $id = $request->subcategory_id;
-    
-        $details = ['name' => $request->name, 'cate_id' => $request->cate_id, 'status' => $request->status];
+
+        $slug = str_slug($request->name);
+        $details = ['name' => $request->name, 'slug' => $slug, 'cate_id' => $request->cate_id, 'status' => $request->status];
     
         SubCategory::updateOrCreate(['id' => $id], $details);  
             
@@ -56,12 +55,14 @@ class SubCategoryController extends Controller
         $where = array('id' => $id);
         $category = Category::get();
         $subcategory  = SubCategory::where($where)->first();
+
         return Response::json(['category' => $category, 'subcategory' => $subcategory]);
     }
 
     public function destroy($id) 
     {
         $subcategory = SubCategory::where('id',$id)->delete();
+
         return Response::json(['success' => 'Xoá thành công']);
     }
 }
