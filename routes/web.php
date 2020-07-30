@@ -13,11 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
+//admin
 Route::group(['prefix' => 'admin'], function() {
 	Route::get('/', 'AdminController@index');
 	//category
@@ -37,3 +33,6 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('post/delete/{id}', 'PostController@destroy');
 	Route::get('post/getSubcategory', 'PostController@getSubcategory');
 });
+
+//client
+Route::get('/', 'ClientController@index');
