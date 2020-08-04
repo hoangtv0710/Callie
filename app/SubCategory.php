@@ -12,4 +12,9 @@ class SubCategory extends Model
     {
         return $this->belongsTo('App\Category', 'cate_id', 'id');
     }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post', 'subcate_id', 'id')->latest()->take(3);
+    }
 }

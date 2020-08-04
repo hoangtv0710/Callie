@@ -36,3 +36,4 @@ Route::group(['prefix' => 'admin'], function() {
 
 //client
 Route::get('/', 'ClientController@index');
+Route::post('/loadmore/load_data', 'ClientController@load_data')->name('loadmore.load_data');
