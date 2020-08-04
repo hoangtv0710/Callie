@@ -10,6 +10,11 @@ class Category extends Model
 
     public function subcategories()
     {
-        return $this->hasMany('App\SubCategory', 'cate_id', 'id');
+        return $this->hasMany('App\SubCategory', 'cate_id', 'id')->where('status', 1)->orderBy('id', 'desc');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post', 'cate_id', 'id')->where('status', 1)->orderBy('id', 'desc');
     }
 }
