@@ -29,12 +29,16 @@ class ClientController extends Controller
             if($request->id > 0){
                 if ($request->cate_id > 0){
                     $data = Post::where('id', '<', $request->id)->where('cate_id', $request->cate_id)->orderBy('id', 'DESC')->skip(4)->limit(5)->get();
+                } elseif($request->subcate_id > 0) {
+                    $data = Post::where('id', '<', $request->id)->where('subcate_id', $request->subcate_id)->orderBy('id', 'DESC')->skip(4)->limit(5)->get();
                 } else {
                     $data = Post::where('id', '<', $request->id)->orderBy('id', 'DESC')->limit(5)->get();
                 }
             } else {
                 if ($request->cate_id > 0) {
                     $data = Post::where('cate_id', $request->cate_id)->orderBy('id', 'DESC')->skip(4)->limit(5)->get();
+                } elseif($request->subcate_id > 0) {
+                    $data = Post::where('subcate_id', $request->cate_id)->orderBy('id', 'DESC')->skip(4)->limit(5)->get();
                 } else {
                     $data = Post::orderBy('id', 'DESC')->limit(5)->get();
                 }
@@ -50,7 +54,7 @@ class ClientController extends Controller
                         <a class="post-img" href="'. $row->slug .'.html"><img src="images/posts/'. $row->image .'" height="190"></a>
                         <div class="post-body">
                             <div class="post-category">
-                                <a href="category.html">'. $row->subcategory->name .'</a>
+                                <a href="'.$row->subcategory->slug .'.html">'. $row->subcategory->name .'</a>
                             </div>
                             <h3 class="post-title"><a href="'. $row->slug .'.html">'. $row->title .'</a></h3>
                             <ul class="post-meta">
@@ -86,8 +90,8 @@ class ClientController extends Controller
     public function getDetail($slug)
     {
         $p = Post::where('slug', $slug)->first();
-        
         $cate = Category::where('slug', $slug)->first();
+        $subcate = SubCategory::where('slug', $slug)->first();
 
         if ($p != "") {
             $previous = Post::where('id', '<', $p->id)->orderBy('id', 'desc')->first();
@@ -95,8 +99,10 @@ class ClientController extends Controller
             return view('client.pages.post_detail', compact('p', 'previous', 'next'));
         } 
         elseif ($cate != "") {
-            // $postByCate = Post::where('cate_id', $cate->id)->get();
             return view('client.pages.category', compact('cate'));
+        }
+        elseif ($subcate != "") {
+            return view('client.pages.subcategory', compact('subcate'));
         }
         else {
             return back()->with('error', 'Đường dẫn không tồn tại!');
