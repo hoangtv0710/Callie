@@ -15,7 +15,7 @@
 
                 <!-- logo -->
                 <div class="nav-logo">
-                    <a href="index.html" class="logo"><img src="assets/client/img/logo.png" alt=""></a>
+                    <a href="{{ url('/') }}" class="logo"><img src="assets/client/img/logo.png" alt=""></a>
                 </div>
                 <!-- /logo -->
 
@@ -43,7 +43,7 @@
                 <!-- nav -->
                 <ul class="nav-menu">
                     <li>
-                        <a href="index.html">Trang chủ</a>
+                        <a href="{{ url('/') }}">Trang chủ</a>
                     </li>
                     @foreach ($category as $item)
                         <li class="@if (count($item->subcategories) > 0) has-dropdown @endif megamenu">
