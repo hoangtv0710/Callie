@@ -20,5 +20,6 @@
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="assets/client/css/style.css" />
+	@yield('css')
 
 </head>

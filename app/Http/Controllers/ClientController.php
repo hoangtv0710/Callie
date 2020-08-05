@@ -6,15 +6,21 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\SubCategory;
 use App\Post;
+use View;
 
 class ClientController extends Controller
 {
-    public function index()
+    public function __construct()
     {
         $category = Category::where('status', 1)->orderBy('id', 'desc')->get();
         $subcategory = SubCategory::where('status', 1)->orderBy('id', 'desc')->get();
         $post = Post::where('status', 1)->orderBy('id', 'desc')->get();
-        return view('client.index', compact('category', 'subcategory', 'post'));
+        View::share(['category' => $category, 'subcategory' => $subcategory, 'post' => $post]);
+    }
+
+    public function index()
+    {
+        return view('client.index');
     }
 
     function load_data(Request $request)
@@ -33,12 +39,12 @@ class ClientController extends Controller
                 foreach($data as $row) {
                     $output .= '
                     <div class="post post-row">
-                        <a class="post-img" href="blog-post.html"><img src="images/posts/'. $row->image .'" height="190"></a>
+                        <a class="post-img" href="'. $row->slug .'.html"><img src="images/posts/'. $row->image .'" height="190"></a>
                         <div class="post-body">
                             <div class="post-category">
                                 <a href="category.html">'. $row->subcategory->name .'</a>
                             </div>
-                            <h3 class="post-title"><a href="blog-post.html">'. $row->title .'</a></h3>
+                            <h3 class="post-title"><a href="'. $row->slug .'.html">'. $row->title .'</a></h3>
                             <ul class="post-meta">
                                 <li><a href="author.html">'. $row->author .'</a></li>
                                 <li>'. \Carbon\Carbon::parse($row->created_at)->format('d/m/Y H:i') .'</li>
@@ -66,6 +72,24 @@ class ClientController extends Controller
                 ';
             }
             echo $output;
+        }
+    }
+
+    public function getDetail($slug)
+    {
+        $p = Post::where('slug', $slug)->firstOrFail();
+        $previous = Post::where('id', '<', $p->id)->orderBy('id', 'desc')->first();
+        $next = Post::where('id', '>', $p->id)->first();
+        // $productType = ProductType::where('slug', $slug)->first();
+        if ($p != "") {
+            return view('client.pages.post_detail', compact('p', 'previous', 'next'));
+        } 
+        // elseif ($productType != "") {
+        //     $productByProType = Product::where('productType_id', $productType->id)->get();
+        //     return view('client.pages.product_type', ['product' => $productByProType, 'producttype' => $productType]);
+        // }
+         else {
+            return back()->with('error', 'Đường dẫn không tồn tại!');
         }
     }
 
