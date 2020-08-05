@@ -27,9 +27,17 @@ class ClientController extends Controller
     {
         if($request->ajax()) {
             if($request->id > 0){
-                $data = Post::where('id', '<', $request->id)->orderBy('id', 'DESC')->limit(5)->get();
+                if ($request->cate_id > 0){
+                    $data = Post::where('id', '<', $request->id)->where('cate_id', $request->cate_id)->orderBy('id', 'DESC')->skip(4)->limit(5)->get();
+                } else {
+                    $data = Post::where('id', '<', $request->id)->orderBy('id', 'DESC')->limit(5)->get();
+                }
             } else {
-                $data = Post::orderBy('id', 'DESC')->limit(5)->get();
+                if ($request->cate_id > 0) {
+                    $data = Post::where('cate_id', $request->cate_id)->orderBy('id', 'DESC')->skip(4)->limit(5)->get();
+                } else {
+                    $data = Post::orderBy('id', 'DESC')->limit(5)->get();
+                }
             }
 
             $output = '';
@@ -77,18 +85,20 @@ class ClientController extends Controller
 
     public function getDetail($slug)
     {
-        $p = Post::where('slug', $slug)->firstOrFail();
-        $previous = Post::where('id', '<', $p->id)->orderBy('id', 'desc')->first();
-        $next = Post::where('id', '>', $p->id)->first();
-        // $productType = ProductType::where('slug', $slug)->first();
+        $p = Post::where('slug', $slug)->first();
+        
+        $cate = Category::where('slug', $slug)->first();
+
         if ($p != "") {
+            $previous = Post::where('id', '<', $p->id)->orderBy('id', 'desc')->first();
+            $next = Post::where('id', '>', $p->id)->first();
             return view('client.pages.post_detail', compact('p', 'previous', 'next'));
         } 
-        // elseif ($productType != "") {
-        //     $productByProType = Product::where('productType_id', $productType->id)->get();
-        //     return view('client.pages.product_type', ['product' => $productByProType, 'producttype' => $productType]);
-        // }
-         else {
+        elseif ($cate != "") {
+            // $postByCate = Post::where('cate_id', $cate->id)->get();
+            return view('client.pages.category', compact('cate'));
+        }
+        else {
             return back()->with('error', 'Đường dẫn không tồn tại!');
         }
     }
