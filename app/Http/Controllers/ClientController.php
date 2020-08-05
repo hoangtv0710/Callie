@@ -28,20 +28,16 @@ class ClientController extends Controller
         if($request->ajax()) {
             if($request->id > 0){
                 if ($request->cate_id > 0){
-                    $data = Post::where('id', '<', $request->id)->where('cate_id', $request->cate_id)->orderBy('id', 'DESC')->skip(4)->limit(5)->get();
+                    $data = Post::where('id', '<', $request->id)->where('cate_id', $request->cate_id)->orderBy('views', 'DESC')->limit(10)->get();
                 } elseif($request->subcate_id > 0) {
-                    $data = Post::where('id', '<', $request->id)->where('subcate_id', $request->subcate_id)->orderBy('id', 'DESC')->skip(4)->limit(5)->get();
-                } else {
-                    $data = Post::where('id', '<', $request->id)->orderBy('id', 'DESC')->limit(5)->get();
+                    $data = Post::where('id', '<', $request->id)->where('subcate_id', $request->subcate_id)->orderBy('views', 'DESC')->limit(10)->get();
                 }
             } else {
                 if ($request->cate_id > 0) {
-                    $data = Post::where('cate_id', $request->cate_id)->orderBy('id', 'DESC')->skip(4)->limit(5)->get();
+                    $data = Post::where('cate_id', $request->cate_id)->orderBy('views', 'DESC')->limit(10)->get();
                 } elseif($request->subcate_id > 0) {
-                    $data = Post::where('subcate_id', $request->cate_id)->orderBy('id', 'DESC')->skip(4)->limit(5)->get();
-                } else {
-                    $data = Post::orderBy('id', 'DESC')->limit(5)->get();
-                }
+                    $data = Post::where('subcate_id', $request->subcate_id)->orderBy('views', 'DESC')->limit(10)->get();
+                } 
             }
 
             $output = '';

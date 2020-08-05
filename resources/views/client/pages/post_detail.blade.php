@@ -56,7 +56,7 @@
                                 <div class="prev-post">
                                     <a class="post-img" href="{{ $previous->slug }}.html"><img src="images/posts/{{ $previous->image }}" alt=""></a>
                                     <h3 class="post-title"><a href="{{ $previous->slug }}.html">{{ $previous->title }}</a></h3>
-                                    <span>Previous post</span>
+                                    <span>Bài trước</span>
                                 </div>
                             @endif
 
@@ -64,7 +64,7 @@
                                 <div class="next-post">
                                     <a class="post-img" href="{{ $next->slug }}.html"><img src="images/posts/{{ $next->image }}" alt=""></a>
                                     <h3 class="post-title"><a href="{{ $next->slug }}.html">{{ $next->title }}</a></h3>
-                                    <span>Next post</span>
+                                    <span>Bài sau</span>
                                 </div>
                             @endif
                         </div>
@@ -98,11 +98,11 @@
                     <!-- /related post -->
                     <div>
                         <div class="section-title">
-                            <h3 class="title">Related Posts</h3>
+                            <h3 class="title">Bài viết liên quan</h3>
                         </div>
                         <div class="row">
                             <!-- post -->
-                            @foreach ($post as $item)
+                            @foreach ($post->take(3) as $item)
                                 @if ($item->cate_id == $p->cate_id)
                                     <div class="col-md-4">
                                         <div class="post post-sm">

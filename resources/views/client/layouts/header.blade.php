@@ -48,46 +48,15 @@
                     @foreach ($category as $item)
                         <li class="@if (count($item->subcategories) > 0) has-dropdown @endif megamenu">
                             <a href="{{ $item->slug }}.html">{{ $item->name }}</a>
-                            @if (count($item->subcategories) > 0)
-                                <div class="dropdown tab-dropdown">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <ul class="tab-nav">
-                                                @foreach ($item->subcategories as $sc)
-                                                    <li @if ($loop->first) class="active" @endif><a data-toggle="tab" href="#tab-{{ $sc->id }}">{{ $sc->name }}</a></li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="dropdown-body tab-content">
-                                                @foreach ($subcategory as $post)
-                                                    <div id="tab-{{ $post->id }}" class="tab-pane fade in active">
-                                                        <div class="row">
-                                                            @foreach ($post->posts as $p)
-                                                                <div class="col-md-4">
-                                                                    <div class="post post-sm">
-                                                                        <a class="post-img" href="blog-post.html"><img src="images/posts/{{ $p->image }}" alt=""></a>
-                                                                        <div class="post-body">
-                                                                            <div class="post-category">
-                                                                                <a href="category.html">{{ $post->name }}</a>
-                                                                            </div>
-                                                                            <h3 class="post-title title-sm"><a href="blog-post.html">{{ $p->title }}</a></h3>
-                                                                            <ul class="post-meta">
-                                                                                <li><a href="author.html">{{ $p->author }}</a></li>
-                                                                                <li>{{ $p->created_at }}</li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="dropdown">
+                                <div class="dropdown-body">
+                                    <ul class="dropdown-list">
+                                        @foreach ($item->subcategories as $subcate_menu)
+                                            <li><a href="{{ $subcate_menu->slug }}.html">{{ $subcate_menu->name }}</a></li>
+                                        @endforeach
+                                    </ul>
                                 </div>
-                            @endif
+                            </div>
                         </li>
                     @endforeach
                     <li>
@@ -105,19 +74,23 @@
         <!-- Aside Nav -->
         <div id="nav-aside">
             <ul class="nav-aside-menu">
-                <li><a href="index.html">Home</a></li>
-                <li class="has-dropdown"><a>Categories</a>
+                <li>
+                    <a href="{{ url('/') }}">Trang chủ</a>
+                </li>
+                <li class="has-dropdown"><a>Danh mục</a>
                     <ul class="dropdown">
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Fashion</a></li>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Health</a></li>
+                        @foreach ($category as $item)
+                            <li><a href="{{ $item->slug }}.html">{{ $item->name }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contacts</a></li>
-                <li><a href="#">Advertise</a></li>
+                <li>
+                    <a href="index.html">Tác giả</a>
+                </li>
+                <li>
+                    <a href="index.html">Liên hệ</a>
+                </li>
+            </ul>
             </ul>
             <button class="nav-close nav-aside-close"><span></span></button>
         </div>

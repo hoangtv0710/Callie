@@ -28,9 +28,9 @@
     </div>
     <div class="newsletter-widget">
         <form>
-            <p>Nec feugiat nisl pretium fusce id velit ut tortor pretium.</p>
-            <input class="input" name="newsletter" placeholder="Enter Your Email">
-            <button class="primary-button">Subscribe</button>
+            <p>Đăng ký nhận tin mới</p>
+            <input class="input" name="newsletter" placeholder="Nhập Email">
+            <button class="primary-button">Đăng ký</button>
         </form>
     </div>
 </div>
@@ -39,7 +39,7 @@
 <!-- post widget -->
 <div class="aside-widget">
     <div class="section-title">
-        <h2 class="title">Popular Posts</h2>
+        <h2 class="title">Bài viết xem nhiều</h2>
     </div>
     <!-- post -->
     @foreach ($post->sortBy('views')->take(5) as $item)
@@ -49,7 +49,7 @@
                 <div class="post-category">
                     <a href="{{ $item->subcategory->slug }}.html">{{ $item->subcategory->name }}</a>
                 </div>
-                <h3 class="post-title"><a href="{{ $item->slug }}.html">{{ str_limit($item->title, 65) }}</a></h3>
+                <h6><a href="{{ $item->slug }}.html">{{ $item->title }}</a></h6>
             </div>
         </div>
     @endforeach
