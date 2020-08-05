@@ -47,7 +47,7 @@
                     </li>
                     @foreach ($category as $item)
                         <li class="@if (count($item->subcategories) > 0) has-dropdown @endif megamenu">
-                            <a href="#">{{ $item->name }}</a>
+                            <a href="{{ $item->slug }}.html">{{ $item->name }}</a>
                             @if (count($item->subcategories) > 0)
                                 <div class="dropdown tab-dropdown">
                                     <div class="row">

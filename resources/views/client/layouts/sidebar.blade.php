@@ -14,7 +14,7 @@
     <div class="category-widget">
         <ul>
             @foreach ($category as $item)
-                <li><a href="#">{{ $item->name }} <span>{{ number_format($item->posts->count()) }}</span></a></li>
+                <li><a href="{{ $item->slug }}.html">{{ $item->name }} <span>{{ number_format($item->posts->count()) }}</span></a></li>
             @endforeach
         </ul>
     </div>
