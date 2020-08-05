@@ -14,7 +14,7 @@
                             <a class="post-img" href="{{ $item->slug }}.html"><img src="images/posts/{{ $item->image }}" height="449"></a>
                             <div class="post-body">
                                 <div class="post-category">
-                                    <a href="category.html">{{ $item->subcategory->name }}</a>
+                                    <a href="{{ $item->subcategory->slug }}.html">{{ $item->subcategory->name }}</a>
                                 </div>
                                 <h3 class="post-title title-lg"><a href="{{ $item->slug }}.html">{{ $item->title }}</a></h3>
                                 <ul class="post-meta">
@@ -32,7 +32,7 @@
                             <a class="post-img" href="{{ $item->slug }}.html"><img src="images/posts/{{ $item->image }}" height="221"></a>
                             <div class="post-body">
                                 <div class="post-category">
-                                    <a href="category.html">{{ $item->subcategory->name }}</a>
+                                    <a href="{{ $item->subcategory->slug }}.html">{{ $item->subcategory->name }}</a>
                                 </div>
                                 <h3 class="post-title"><a href="{{ $item->slug }}.html">{{ $item->title }}</a></h3>
                                 <ul class="post-meta">
@@ -70,7 +70,7 @@
                                 <a class="post-img" href="{{ $item->slug }}.html"><img src="images/posts/{{ $item->image }}" height="245"></a>
                                 <div class="post-body">
                                     <div class="post-category">
-                                        <a href="category.html">{{ $item->subcategory->name }}</a>
+                                        <a href="{{ $item->subcategory->slug }}.html">{{ $item->subcategory->name }}</a>
                                     </div>
                                     <h3 class="post-title"><a href="{{ $item->slug }}.html">{{ $item->title }}</a></h3>
                                     <ul class="post-meta">
@@ -158,7 +158,7 @@
                                 <a class="post-img" href="{{ $p->slug }}.html"><img src="images/posts/{{ $p->image }}" height="225"></a>
                                 <div class="post-body">
                                     <div class="post-category">
-                                        <a href="category.html">{{ $p->subcategory->name }}</a>
+                                        <a href="{{ $p->subcategory->slug }}.html">{{ $p->subcategory->name }}</a>
                                     </div>
                                     <h3 class="post-title"><a href="{{ $p->slug }}.html">{{ $p->title }}</a></h3>
                                     <ul class="post-meta">
@@ -172,7 +172,7 @@
                                 <a class="post-img" href="{{ $p->slug }}.html"><img src="images/posts/{{ $p->image }}" height="90"></a>
                                 <div class="post-body">
                                     <div class="post-category">
-                                        <a href="category.html">{{ $p->subcategory->name }}</a>
+                                        <a href="{{ $p->subcategory->slug }}.html">{{ $p->subcategory->name }}</a>
                                     </div>
                                     <h3 class="post-title"><a href="{{ $p->slug }}.html">{{ $p->title }}</a></h3>
                                 </div>

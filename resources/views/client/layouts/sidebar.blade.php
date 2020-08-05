@@ -47,7 +47,7 @@
             <a class="post-img" href="{{ $item->slug }}.html"><img src="images/posts/{{ $item->image }}" height="90"></a>
             <div class="post-body">
                 <div class="post-category">
-                    <a href="category.html">{{ $item->subcategory->name }}</a>
+                    <a href="{{ $item->subcategory->slug }}.html">{{ $item->subcategory->name }}</a>
                 </div>
                 <h3 class="post-title"><a href="{{ $item->slug }}.html">{{ str_limit($item->title, 65) }}</a></h3>
             </div>
