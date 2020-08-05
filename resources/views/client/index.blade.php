@@ -61,10 +61,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-title">
-                            <h2 class="title">Recent posts</h2>
+                            <h2 class="title">Bài viết mới</h2>
                         </div>
                     </div>
-                    @foreach ($post->slice(3, 10) as $item)
+                    @foreach ($post->slice(3, 6) as $item)
                         <div class="col-md-6">
                             <div class="post">
                                 <a class="post-img" href="{{ $item->slug }}.html"><img src="images/posts/{{ $item->image }}" height="245"></a>
@@ -72,7 +72,7 @@
                                     <div class="post-category">
                                         <a href="{{ $item->subcategory->slug }}.html">{{ $item->subcategory->name }}</a>
                                     </div>
-                                    <h3 class="post-title"><a href="{{ $item->slug }}.html">{{ $item->title }}</a></h3>
+                                    <h3 class="post-title recent"><a href="{{ $item->slug }}.html">{{ $item->title }}</a></h3>
                                     <ul class="post-meta">
                                         <li><a href="author.html">{{ $item->author }}</a></li>
                                         <li>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i')}}</li>
@@ -152,7 +152,7 @@
                         <h2 class="title">{{ $item->name }}</h2>
                     </div>
                     <!-- post -->
-                    @foreach ($item->posts->take(3) as $p)
+                    @foreach ($item->posts->take(6) as $p)
                         @if($loop->first)
                             <div class="post">
                                 <a class="post-img" href="{{ $p->slug }}.html"><img src="images/posts/{{ $p->image }}" height="225"></a>
@@ -191,75 +191,4 @@
     <!-- /container -->
 </div>
 
-<div class="section">
-    <!-- container -->
-    <div class="container">
-        <!-- row -->
-        <div class="row">
-            <div class="col-md-8">
-                {{ csrf_field() }}
-                <div id="post_data"></div>
-            </div>
-            <div class="col-md-4">
-                <!-- galery widget -->
-                <div class="aside-widget">
-                    <div class="section-title">
-                        <h2 class="title">Instagram</h2>
-                    </div>
-                    <div class="galery-widget">
-                        <ul>
-                            <li><a href="#"><img src="assets/client/img/galery-1.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="assets/client/img/galery-2.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="assets/client/img/galery-3.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="assets/client/img/galery-4.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="assets/client/img/galery-5.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="assets/client/img/galery-6.jpg" alt=""></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /galery widget -->
-
-                <!-- Ad widget -->
-                <div class="aside-widget text-center">
-                    <a href="#" style="display: inline-block;margin: auto;">
-                        <img class="img-responsive" src="assets/client/img/ad-1.jpg" alt="">
-                    </a>
-                </div>
-                <!-- /Ad widget -->
-            </div>
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-@endsection
-
-@section('script')
-    <script>
-        $(document).ready(function(){
-    
-            var _token = $('input[name="_token"]').val();
-        
-            load_data('', _token);
-        
-            function load_data(id="", _token)
-            {
-                $.ajax({
-                    url:"{{ route('loadmore.load_data') }}",
-                    method:"POST",
-                    data:{id:id, _token:_token},
-                    success:function(data)
-                    {
-                        $('#load_more_button').remove();
-                        $('#post_data').append(data);
-                    }
-                })
-            }
-            $(document).on('click', '#load_more_button', function(){
-                var id = $(this).data('id');
-                $('#load_more_button').html('<b>Đang tải...</b>');
-                load_data(id, _token);
-            });
-        });
-    </script>
 @endsection

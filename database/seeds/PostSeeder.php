@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\SubCategory;
+use Carbon\Carbon;
 
 class PostSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class PostSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
+        $datetime = Carbon::now('Asia/Ho_Chi_Minh');
        
         if (DB::table('posts')->count() == 0) {
     		DB::table('posts')->insert([
@@ -25,7 +27,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 1,
                     'subcate_id' => 1,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
     			],
     			[
     				'title' => $title = 'Cuộc sống của Hoa hậu Đại dương: Người sinh đôi, người làm giảng viên',
@@ -36,7 +40,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 1,
                     'subcate_id' => 1,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = 'Mỹ nhân Việt "đụng hàng" váy áo chục triệu với sao Hàn',
@@ -47,7 +53,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 1,
                     'subcate_id' => 1,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
     			],
     			[
     				'title' => $title = 'Trấn Thành lên tiếng khi bị chê bai không phù hợp làm MC Rap Việt',
@@ -58,7 +66,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 1,
                     'subcate_id' => 1,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = 'Minh Tú diện đồ sale, thả dáng như chụp ảnh tạp chí ở khu cách ly',
@@ -69,7 +79,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 1,
                     'subcate_id' => 1,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = 'Hồ Ngọc Hà ủng hộ 185.000 khẩu trang y tế cho Đà Nẵng chống dịch',
@@ -80,7 +92,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 1,
                     'subcate_id' => 1,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = 'Minh Luân lặng lẽ viếng đám tang diễn viên trẻ qua đời trong mùa dịch',
@@ -91,7 +105,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 1,
                     'subcate_id' => 1,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = 'Thí sinh HHVN 2K1 Phù Bảo Nghi: Đỗ ba trường Đại học ở Mỹ',
@@ -102,7 +118,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 1,
                     'subcate_id' => 1,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = '2 nữ chính "nhọ" nhất "Người ấy là ai": Khánh Vân, em gái Hoàng Thùy',
@@ -113,7 +131,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 1,
                     'subcate_id' => 1,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = 'Bộ ảnh cưới để đời của cặp đôi trẻ thành hôn đúng mùa mưa bão lụt lội',
@@ -124,7 +144,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 2,
                     'subcate_id' => 2,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = 'Xúc động chàng trai mỉm cười bên mộ bạn gái đã mất',
@@ -135,7 +157,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 2,
                     'subcate_id' => 2,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = 'Rủ cô gái đi chơi tối không được, du học sinh đòi tiền cốc sữa chua',
@@ -146,7 +170,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 2,
                     'subcate_id' => 2,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = 'Phụ vợ bỏ con, đại gia cùng dàn tình nhân đều phải nhận trái đắng',
@@ -157,7 +183,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 2,
                     'subcate_id' => 2,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = 'Rủ đi nhà nghỉ không thành, thanh niên đòi 10 nghìn đồng nước mía',
@@ -168,7 +196,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 2,
                     'subcate_id' => 2,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
                 [
     				'title' => $title = 'Thanh niên "bóc phốt" nhan sắc bạn gái yêu qua mạng gây tranh cãi',
@@ -179,7 +209,9 @@ class PostSeeder extends Seeder
                     'cate_id' => 2,
                     'subcate_id' => 2,
                     'author' => 'Admin',
-    				'status' => 1,
+                    'status' => 1,
+                    'views' => rand(1,999),
+                    'created_at' => $datetime,
                 ],
     		]);
     	}

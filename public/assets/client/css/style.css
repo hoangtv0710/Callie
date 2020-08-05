@@ -430,11 +430,12 @@ textarea.input {
 .nav-menu>li {
   float: none;
   display: inline-block;
+  margin: 15px;
 }
 
 .nav-menu>li>a {
   display: block;
-  padding: 25px 15px;
+  padding: 5px 15px;
   line-height: 20px;
   font-weight: 700;
   text-transform: uppercase;
@@ -456,9 +457,7 @@ textarea.input {
 
 .nav-menu li.has-dropdown>.dropdown {
   position: absolute;
-  left: 0;
-  width: 200px;
-  text-align: left;
+  text-align: center;
   z-index: 60;
   -webkit-transform: translateY(10px);
   -ms-transform: translateY(10px);
@@ -467,6 +466,7 @@ textarea.input {
   visibility: hidden;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
+  margin-left: 15px;
 }
 
 .nav-menu li.has-dropdown:hover>.dropdown {
@@ -511,15 +511,11 @@ textarea.input {
 }
 
 .nav-menu li.has-dropdown.megamenu>.dropdown {
-  width: 100%;
+  width: 130px;
 }
 
 .nav-menu li.has-dropdown.megamenu>.dropdown .dropdown-body {
-  padding: 30px;
-}
-
-.nav-menu li.has-dropdown.megamenu>.dropdown .dropdown-list {
-  margin-bottom: 30px;
+  padding: 10px;
 }
 
 .nav-menu li.has-dropdown.megamenu>.dropdown .dropdown-list li a {
@@ -752,11 +748,19 @@ textarea.input {
 }
 
 .post .post-title {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+.post .recent {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 
 .post .post-title.title-sm {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .post .post-title.title-lg {
