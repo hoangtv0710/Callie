@@ -105,4 +105,9 @@ class ClientController extends Controller
         }
     }
 
+    public function contact()
+    {
+        return view('client.pages.contact');
+    }
+
 }

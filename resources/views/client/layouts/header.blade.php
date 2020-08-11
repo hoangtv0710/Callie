@@ -63,7 +63,7 @@
                         <a href="index.html">Tác giả</a>
                     </li>
                     <li>
-                        <a href="index.html">Liên hệ</a>
+                        <a href="{{ url('/contact') }}">Liên hệ</a>
                     </li>
                 </ul>
                 <!-- /nav -->
@@ -88,7 +88,7 @@
                     <a href="index.html">Tác giả</a>
                 </li>
                 <li>
-                    <a href="index.html">Liên hệ</a>
+                    <a href="{{ url('/contact') }}">Liên hệ</a>
                 </li>
             </ul>
             </ul>
