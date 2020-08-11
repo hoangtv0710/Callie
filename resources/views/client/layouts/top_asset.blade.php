@@ -20,6 +20,7 @@
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="assets/client/css/style.css" />
+	<link href="css/toastr.css" rel="stylesheet">
 	@yield('css')
 
 </head>

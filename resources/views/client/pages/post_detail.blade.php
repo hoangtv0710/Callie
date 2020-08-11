@@ -102,8 +102,8 @@
                         </div>
                         <div class="row">
                             <!-- post -->
-                            @foreach ($post->take(3) as $item)
-                                @if ($item->cate_id == $p->cate_id)
+                            @foreach ($post->take(4) as $item)
+                                @if ($item->cate_id == $p->cate_id && $item != $p)
                                     <div class="col-md-4">
                                         <div class="post post-sm">
                                             <a class="post-img" href="{{ $item->slug }}.html"><img src="images/posts/{{ $item->image }}" height="140"></a>
