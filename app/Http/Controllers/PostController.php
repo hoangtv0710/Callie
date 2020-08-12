@@ -25,7 +25,7 @@ class PostController extends Controller
             ->addColumn('subcategory', function (Post $p) {
                 return $p->subcategory->name;
             })
-            ->addColumn('created_at', 'admin.pages.post.created_at')
+            ->addColumn('created_at', 'admin.pages.share.created_at')
             ->addColumn('status', 'admin.pages.share.status')
             ->rawColumns(['action','image'])
             ->addIndexColumn()

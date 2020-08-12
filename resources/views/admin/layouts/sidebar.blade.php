@@ -45,6 +45,14 @@
         </a>
       </li>
 
+      <!-- Liên hệ -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url('/admin/contact') }}">
+          <i class="fas fa-newspaper"></i>
+          <span>Liên hệ</span>
+        </a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
