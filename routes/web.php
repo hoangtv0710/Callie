@@ -32,6 +32,11 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::post('post/store', 'PostController@store');
 	Route::get('post/delete/{id}', 'PostController@destroy');
 	Route::get('post/getSubcategory', 'PostController@getSubcategory');
+	//contact
+	Route::get('contact', 'ContactController@index');
+	Route::get('contact/{id}/reply', 'ContactController@reply');
+	Route::post('contact/post_reply', 'ContactController@post_reply');
+	Route::get('contact/delete/{id}', 'ContactController@destroy');
 });
 
 //client
