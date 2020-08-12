@@ -18,4 +18,14 @@
   <script src="assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
   <script src="js/toastr.min.js"></script>
   <script src="ckeditor/ckeditor.js"></script>
+  @if(session('success'))
+    <script>
+        toastr.success('{{ session('success') }}', 'Thông báo', {timeOut: 4000});
+    </script>
+  @endif
+  @if(session('error'))
+    <script>
+        toastr.error('{{ session('error') }}', 'Lỗi', {timeOut: 4000});
+    </script>
+  @endif
   @yield('script')

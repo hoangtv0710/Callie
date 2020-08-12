@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 //admin
-Route::group(['prefix' => 'admin'], function() {
-	Route::get('/', 'AdminController@index');
+Route::get('admin/login','AdminController@login')->name('admin.login');
+Route::post('admin/post_login','AdminController@postLogin')->name('admin.post_login');
+Route::get('admin/logout','AdminController@logout')->name('admin.logout');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function() {
+	Route::get('/', 'AdminController@index')->name('admin');
 	//category
 	Route::get('category', 'CategoryController@index');
 	Route::get('category/{id}/edit', 'CategoryController@edit');
