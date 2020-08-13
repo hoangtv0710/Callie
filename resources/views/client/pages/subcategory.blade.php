@@ -30,7 +30,7 @@
                                     <h3 class="post-title title-lg"><a href="{{ $item->slug }}.html">{{ $item->title }}</a></h3>
                                     <ul class="post-meta">
                                         <li><a href="author.html">{{ $item->author }}</a></li>
-                                        <li>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i')}}</li>
+                                        <li>{{ $item->created_at->diffForHumans() }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                         <h3 class="post-title recent"><a href="{{ $item->slug }}.html">{{ $item->title }}</a></h3>
                                         <ul class="post-meta">
                                             <li><a href="author.html">{{ $item->author }}</a></li>
-                                            <li>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i')}}</li>
+                                            <li>{{ $item->created_at->diffForHumans() }}</li>
                                         </ul>
                                     </div>
                                 </div>
