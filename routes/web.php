@@ -51,3 +51,5 @@ Route::get('{slug}.html', 'ClientController@getDetail');
 
 Route::get('/contact', 'ClientController@contact');
 Route::post('/post_contact', 'ContactController@add');
+
+Route::post('/search_post', 'ClientController@search_post');

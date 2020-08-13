@@ -55,7 +55,7 @@ class ClientController extends Controller
                             <h3 class="post-title"><a href="'. $row->slug .'.html">'. $row->title .'</a></h3>
                             <ul class="post-meta">
                                 <li><a href="author.html">'. $row->author .'</a></li>
-                                <li>'. \Carbon\Carbon::parse($row->created_at)->format('d/m/Y H:i') .'</li>
+                                <li>'. $row->created_at->diffForHumans() .'</li>
                             </ul>
                             <p>'. $row->description .'</p>
                         </div>
@@ -92,7 +92,8 @@ class ClientController extends Controller
         if ($p != "") {
             $previous = Post::where('id', '<', $p->id)->orderBy('id', 'desc')->first();
             $next = Post::where('id', '>', $p->id)->first();
-            return view('client.pages.post_detail', compact('p', 'previous', 'next'));
+            $related_post = Post::where('cate_id', $p->cate_id)->where('id', '<>', $p->id)->orderBy('id', 'desc')->limit(6)->get();
+            return view('client.pages.post_detail', compact('p', 'previous', 'next', 'related_post'));
         } 
         elseif ($cate != "") {
             return view('client.pages.category', compact('cate'));
@@ -108,6 +109,13 @@ class ClientController extends Controller
     public function contact()
     {
         return view('client.pages.contact');
+    }
+
+    public function search_post(Request $request)
+    {
+        $input = $request->keyword;
+        $output = Post::where('title', 'LIKE', '%' . $input .'%')->limit(20)->get();
+        return view('client.pages.search_post', compact('output', 'input'));
     }
 
 }

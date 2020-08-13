@@ -102,24 +102,22 @@
                         </div>
                         <div class="row">
                             <!-- post -->
-                            @foreach ($post->take(4) as $item)
-                                @if ($item->cate_id == $p->cate_id && $item != $p)
-                                    <div class="col-md-4">
-                                        <div class="post post-sm">
-                                            <a class="post-img" href="{{ $item->slug }}.html"><img src="images/posts/{{ $item->image }}" height="140"></a>
-                                            <div class="post-body">
-                                                <div class="post-category">
-                                                    <a href="category.html">{{ $item->subcategory->name }}</a>
-                                                </div>
-                                                <h3 class="post-title title-sm"><a href="{{ $item->slug }}.html">{{ $item->title }}</a></h3>
-                                                <ul class="post-meta">
-                                                    <li><a href="author.html">{{ $item->author }}</a></li>
-                                                    <li>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i')}}</li>
-                                                </ul>
+                            @foreach ($related_post as $item)
+                                <div class="col-md-4">
+                                    <div class="post post-sm">
+                                        <a class="post-img" href="{{ $item->slug }}.html"><img src="images/posts/{{ $item->image }}" height="140"></a>
+                                        <div class="post-body">
+                                            <div class="post-category">
+                                                <a href="category.html">{{ $item->subcategory->name }}</a>
                                             </div>
+                                            <h3 class="post-title title-sm"><a href="{{ $item->slug }}.html">{{ $item->title }}</a></h3>
+                                            <ul class="post-meta">
+                                                <li><a href="author.html">{{ $item->author }}</a></li>
+                                                <li>{{ $item->created_at->diffForHumans() }}</li>
+                                            </ul>
                                         </div>
                                     </div>
-                                @endif
+                                </div>
                             @endforeach
                             <!-- /post -->
                         </div>
